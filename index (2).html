@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#080b12">
+    <title>WaveMusic | CodeAlpha Music Player</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="music-player">
+        <header class="header">
+            <h1>Wave<span>Music</span></h1>
+            <p>Your music. Your rhythm.</p>
+        </header>
+
+        <section class="player" aria-label="Music player">
+            <div class="album-art" id="albumArt"><span>♫</span></div>
+
+            <div class="song-info">
+                <h2 id="songTitle">Select a song</h2>
+                <p id="artistName">Unknown Artist</p>
+            </div>
+
+            <audio id="audio" preload="metadata"></audio>
+
+            <div class="progress-container">
+                <span id="currentTime">0:00</span>
+                <input type="range" id="progressBar" min="0" max="100" value="0" aria-label="Song progress">
+                <span id="duration">0:00</span>
+            </div>
+
+            <div class="controls">
+                <button id="prevBtn" type="button" aria-label="Previous song">⏮</button>
+                <button id="playBtn" class="play-btn" type="button" aria-label="Play">▶</button>
+                <button id="nextBtn" type="button" aria-label="Next song">⏭</button>
+            </div>
+
+            <div class="volume-container">
+                <span aria-hidden="true">🔈</span>
+                <input type="range" id="volumeBar" min="0" max="1" step="0.01" value="1" aria-label="Volume">
+                <span aria-hidden="true">🔊</span>
+            </div>
+        </section>
+
+        <section class="online-music" aria-label="Online music">
+            <div class="online-header">
+                <div>
+                    <h3>Online Music</h3>
+                    <p>Discover music and worship</p>
+                </div>
+                <span class="online-badge">ONLINE</span>
+            </div>
+
+            <div class="music-search">
+                <span class="search-icon" aria-hidden="true">⌕</span>
+                <input type="search" id="musicSearch" placeholder="Search songs or artists..." aria-label="Search songs or artists" autocomplete="off">
+            </div>
+            <p id="searchMessage" role="status"></p>
+
+            <div class="music-categories" aria-label="Filter by category">
+                <button type="button" class="category-btn active" data-category="all">All Music</button>
+                <button type="button" class="category-btn" data-category="worship">Worship</button>
+                <button type="button" class="category-btn" data-category="praise">Gospel Praise</button>
+                <button type="button" class="category-btn" data-category="gospel">Gospel</button>
+                <button type="button" class="category-btn" data-category="instrumental">Instrumental</button>
+                <button type="button" class="category-btn" data-category="relaxation">Relaxation</button>
+                <button type="button" class="category-btn" data-category="hymns">Hymns</button>
+            </div>
+
+            <div class="notification-setting">
+                <label for="notificationToggle">
+                    <span>
+                        <strong>Media notifications</strong>
+                        <small>Show song details and media controls when supported</small>
+                    </span>
+                    <input type="checkbox" id="notificationToggle" checked>
+                </label>
+            </div>
+
+            <div class="online-tracks" id="onlineTracks"></div>
+
+            <div class="video-container" id="videoContainer">
+                <div class="video-placeholder" id="videoPlaceholder">
+                    <span>♫</span>
+                    <p>Select an online song to start listening</p>
+                </div>
+            </div>
+            <p class="online-note">Online playback requires internet access. Background playback for embedded YouTube videos depends on browser and YouTube restrictions.</p>
+        </section>
+
+        <section class="playlist-section" aria-label="My playlist">
+            <div class="playlist-header">
+                <h3>My Playlist</h3>
+                <label for="localMusic" class="add-music-btn">+ Add Music</label>
+                <input type="file" id="localMusic" accept="audio/*,.mp3,.m4a,.wav,.ogg,.aac,.flac" multiple hidden>
+            </div>
+            <p class="playlist-hint">Select audio files stored on your phone. Keep this page open while testing.</p>
+            <ul id="playlist"></ul>
+            <p id="statusMessage" role="status"></p>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
